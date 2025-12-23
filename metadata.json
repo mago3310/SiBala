@@ -1,0 +1,5 @@
+{
+  "name": "Siba-la 3D Dice",
+  "description": "A high-end, interactive 3D dice rolling application for the classic Siba-la game with customizable dice counts (1-6) and realistic tumbling animations.",
+  "requestFramePermissions": []
+}

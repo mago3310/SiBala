@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>十八啦</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1a 100%);
+      color: #e2e8f0;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    
+    /* 3D Dice Styles */
+    .dice-container {
+      perspective: 1000px;
+    }
+
+    .dice {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .dice-face {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      background: #1a1a2e;
+      border-radius: 50%;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Face mappings */
+    .face-1 { transform: translateZ(40px); }
+    .face-2 { transform: rotateY(180deg) translateZ(40px); }
+    .face-3 { transform: rotateY(90deg) translateZ(40px); }
+    .face-4 { transform: rotateY(-90deg) translateZ(40px); }
+    .face-5 { transform: rotateX(90deg) translateZ(40px); }
+    .face-6 { transform: rotateX(-90deg) translateZ(40px); }
+
+    /* Dot patterns */
+    .dots-1 { display: flex; justify-content: center; align-items: center; }
+    .dots-2 { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; transform: rotate(45deg); }
+    .dots-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 5px; transform: rotate(45deg); }
+    .dots-4 { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 15px; }
+    .dots-5 { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 5px; }
+    .dots-5 .dot:nth-child(1) { grid-column: 1; grid-row: 1; }
+    .dots-5 .dot:nth-child(2) { grid-column: 3; grid-row: 1; }
+    .dots-5 .dot:nth-child(3) { grid-column: 2; grid-row: 2; }
+    .dots-5 .dot:nth-child(4) { grid-column: 1; grid-row: 3; }
+    .dots-5 .dot:nth-child(5) { grid-column: 3; grid-row: 3; }
+    .dots-6 { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 8px; }
+
+    /* Animations */
+    @keyframes roll {
+      0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+      100% { transform: rotateX(720deg) rotateY(1080deg) rotateZ(360deg); }
+    }
+
+    .rolling {
+      animation: roll 0.6s infinite linear;
+    }
+
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Custom scrollbar for better aesthetics */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
